@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         maxWidth: 140,
     },
     containerTextToGuess: {
-        fontFamily: 'IndieFlower',
+        fontFamily: 'IndieFlower-Regular',
         fontSize: 24,
         letterSpacing: 10,
     },

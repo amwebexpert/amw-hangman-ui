@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   category: {
-    fontFamily: 'IndieFlower',
+    fontFamily: 'IndieFlower-Regular',
     fontSize: 18,
     color: 'orange',
   },
   containerTextToGuess: {
-    fontFamily: 'IndieFlower',
+    fontFamily: 'IndieFlower-Regular',
     fontSize: 24,
     letterSpacing: 10,
     color: 'orange',

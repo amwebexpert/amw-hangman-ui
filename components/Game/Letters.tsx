@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   letter: {
-    fontFamily: 'IndieFlower',
+    fontFamily: 'IndieFlower-Regular',
     color: 'white',
   },
 });

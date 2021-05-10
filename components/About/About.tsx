@@ -88,12 +88,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     title: {
-        fontFamily: 'IndieFlower',
+        fontFamily: 'IndieFlower-Regular',
         color: 'white',
         marginBottom: 20,
     },
     aboutInfo: {
-        fontFamily: 'IndieFlower',
+        fontFamily: 'IndieFlower-Regular',
         color: 'white',
         fontSize: 14,
     },

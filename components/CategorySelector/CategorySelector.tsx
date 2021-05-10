@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     category: {
         textAlign: 'center',
-        fontFamily: 'IndieFlower',
+        fontFamily: 'IndieFlower-Regular',
         fontSize: 24,
         letterSpacing: 10,
         backgroundColor: 'black',
