@@ -2,8 +2,10 @@ import { useFocusEffect } from '@react-navigation/native';
 import axios from 'axios';
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
-import { Avatar, Caption, Card, Paragraph, Title } from 'react-native-paper';
+import { PanGestureHandler } from 'react-native-gesture-handler';
+import { Avatar, Caption, Card, Paragraph, Text, Title } from 'react-native-paper';
 import { QueryFunctionContext, useQuery } from 'react-query';
+import BottomSheet from 'reanimated-bottom-sheet';
 import { appConfigs } from '../../app-configs';
 import { AboutDto } from '../../services/types';
 import ApplicationLayout from '../ApplicationLayout/ApplicationLayout';
@@ -27,6 +29,7 @@ async function fetchAboutInfo(context: QueryFunctionContext): Promise<AboutDto> 
 
 const About: React.FC<Props> = (props: Props) => {
     const { isLoading, isSuccess, data, refetch } = useQuery<AboutDto, Error>(['about', true], fetchAboutInfo);
+    const sheetRef = React.useRef<any>(null);
 
     useFocusEffect(
         React.useCallback(() => {
@@ -36,8 +39,27 @@ const About: React.FC<Props> = (props: Props) => {
 
     const AppImage = () => <Avatar.Image size={48} source={require('../../assets/icon.png')} />;
 
+    const renderContent = () => (
+        <View
+          style={{
+            backgroundColor: 'white',
+            padding: 16,
+            margin: 4,
+            height: 300,
+          }}
+        >
+          <Text>Swipe down to close</Text>
+        </View>
+      );
+
     return (
         <ApplicationLayout title="A propos..." backButton={true}>
+            <PanGestureHandler onGestureEvent={(e) => {
+                if (e.nativeEvent.velocityY < 0) {
+                    // console.log('____________________________________', e.nativeEvent.velocityY);
+                    sheetRef.current.snapTo(0);
+                }
+            }}>
             <View style={styles.container}>
                 <ImageBackground source={image} style={styles.image}>
                     <View style={styles.textContainer}>
@@ -46,7 +68,7 @@ const About: React.FC<Props> = (props: Props) => {
                         {isLoading && <Spinner />}
 
                         {isSuccess &&
-                            <Card style={styles.card}>
+                            <Card style={styles.card} onPress={() => sheetRef.current.snapTo(0)}>
                                 <Card.Title title="Le plendu numérique"
                                     subtitle="Jeu de devinette" left={AppImage} />
                                 <Card.Content>
@@ -66,6 +88,14 @@ const About: React.FC<Props> = (props: Props) => {
                     </View>
                 </ImageBackground>
             </View>
+            </PanGestureHandler>
+            <BottomSheet
+                ref={sheetRef}
+                snapPoints={[200, 100, 0]} // snapTo(0), snapTo(1), snapTo(2)
+                borderRadius={24}
+                initialSnap={2} // to keep hidden on mount
+                renderContent={renderContent}
+            />            
         </ApplicationLayout>
     );
 }

@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { Theme } from 'react-native-paper/lib/typescript/types';
 import ApplicationBar from './ApplicationBar';
 
 interface Props {
