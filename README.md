@@ -41,3 +41,4 @@ Good YouTube playlist tutorial here:
 * https://callstack.github.io/react-native-paper/
 * https://oblador.github.io/react-native-vector-icons/
 * https://reactnavigation.org/docs/getting-started
+* https://medium.com/@aravindmnair/add-custom-fonts-to-react-native-0-60-easily-in-3-steps-fcd71459f4c9
